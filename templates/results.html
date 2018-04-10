@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Stack Decoder Results</title>
+       <link rel="stylesheet" media="screen" href ="static/css/bootstrap.min.css">
+       <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+      <div class="container">
+    <h2>Decoder Results:</h2>
+            <table border = 0>
+            {% for entry in result %}
+                  <tr>
+                     <td> {{entry}} </td>
+                  </tr>
+            {% endfor %}
+            </table>
+      </div>
+    </body>
+</html>

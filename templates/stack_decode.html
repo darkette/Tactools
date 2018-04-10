@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Stack Decoder</title>
+       <link rel="stylesheet" media="screen" href ="static/css/bootstrap.min.css">
+       <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+
+
+<div class="container">
+
+
+  <h2>Ruckus ICX Decoder</h2>
+  <form  action="http://happy.darkphoenix.net:5000/" method="POST" role="form">
+    {{ form.csrf }}
+    <div class="form-group">
+      <label for="stack">Stack Trace:</label>
+      <input type="text" class="form-control" id="stack" name="stack" placeholder="Stack decode goes here">
+      <br>
+      <label for="mapfile">Mapfile:</label>
+      <input type="text" class="form-control" id="mapfile" name="mapfile" placeholder="Mapfile location">
+      <br>
+      <label for="c_version">Code Version:</label>
+      <input type="text" class="form-control" id="c_version" name="c_version" placeholder="Code Version e.g SXR08030h">
+    </div>
+    <button type="submit" class="btn btn-success">Decode</button>
+  </form>
+
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+</div>
+<br>
+</div>
+</div>
+</body>
+</html>
