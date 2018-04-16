@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Stack Decoder</title>
+       <link rel="stylesheet" media="screen" href ="static/css/bootstrap.min.css">
+       <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+    </head>
+    <link href="static/css/tactools_style.css" type="text/css" rel="stylesheet" />
+    <body>
+
+
+<div class="container">
+
+
+  <h2>Ruckus Text Decoder</h2>
+  <form  action="http://happy.darkphoenix.net:5555/text_decode" method="POST" role="form" enctype = "multipart/form-data">
+    {{ form.csrf }}
+  <br>
+    <table>
+      <tr><td>
+    <div class="form-group">
+      {{ form.mapFile_1 }}
+      </td></div>
+      <td><div class="form-group">
+        {{ form.mapFile_2 }}
+      </td></div>
+      <td><div class="form-group">
+        {{ form.mapFile_3 }}
+      </td></div>
+      <td><div class="form-group">
+        {{ form.mapFile_4 }}
+      </td></div>
+    </table>
+
+      <div class="form-group">
+      <label for="stack">Textfile of Stack:</label>
+      <input type="file" id="file" name="file" placeholder="Stack decode goes here"/>
+      <br>
+      <input type="submit"/>
+    </div>
+  </form>
+
+  <br>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+
+        {% for message in messages %}
+            {% if "Error" not in message[1]: %}
+                <div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}
+                </div>
+            {% endif %}
+
+            {% if "Error" in message[1]: %}
+                <div class="alert alert-warning">
+                {{ message[1] }}
+                </div>
+            {% endif %}
+        {% endfor %}
+            {% endif %}
+        {% endwith %}
+</div>
+<br>
+</div>
+</div>
+</body>
+</html>
